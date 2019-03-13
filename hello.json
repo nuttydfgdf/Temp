@@ -1,4 +1,4 @@
 {
-   status: "success",
-   message: "Hello world"
+   "status": "success",
+   "message": "Hello world"
 }
