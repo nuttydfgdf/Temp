@@ -1,0 +1,22 @@
+{
+	"name" : "check-list-qr-payment",
+	"appInfo" : {
+		"appId" : "1234"
+	},
+	"apiProductName" : "QR Payment (POS API)",
+	"testCase" : [
+		{ 
+			"no" : 1,
+			"title" : "Generate QR",
+			"result" : true
+		},
+		{ 
+			"no" : 2,
+			"title" : "Generate QR",
+			"result" : true
+		},
+		
+	],
+	"testResult" : "pass"
+
+}
