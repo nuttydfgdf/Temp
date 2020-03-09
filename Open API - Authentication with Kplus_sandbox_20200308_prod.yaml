@@ -1,0 +1,1368 @@
+swagger: '2.0'
+schemes:
+  - https 
+host: 'openapi-sandbox.kasikornbank.com'
+basePath: /
+
+info:
+  title: Open API - บริการรับ-ส่งข้อมูล ผ่าน K PLUS
+  description: >
+    บริการที่อำนวยความสะดวกในการรับ-ส่งข้อมูลทางอิเล็กทรอนิกส์ ให้กับลูกค้าผู้ยินยอมเปิดผยข้อมูลผ่านช่องทาง KPLUS
+    
+  version: 1.0.0
+  
+  
+paths:
+  /v1/authenwithkplus/form:
+    post:
+      tags:
+        - Authentication with K+
+      summary: Request Form Authentication
+      description: >
+        KBank’s partner sends a request for retrieve authentication options. The API service reply following information base on partner integration.
+        <p><strong>Parameters</strong></p>
+          <div class="TableWrapper sc-laTMn ehpwfJ">
+              <table class="CustomTable sc-hGoxap cFgzXX">
+                  <thead>
+                      <tr>
+                          <th style="text-align: left;">Field</th>
+                          <th style="text-align: left;">Data Type</th>
+                          <th style="text-align: left;">Description</th>
+                          <th style="text-align: left;">Example</th>
+                          <th style="text-align: center;">Mandatory</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Header parameter
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">apikey</td>
+                          <td style="text-align: left;">string</td>
+                          <td style="text-align: left;">API KEY</td>
+                          <td style="text-align: left;">a2FzaWtvcm5iYW5rdXNlcg==</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Body parameter
+                        </td>
+                      </tr>
+                      <tr>
+                          <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;">  - Header object
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">ipAddr</td>
+                          <td style="text-align: left;">string(15)</td>
+                          <td style="text-align: left;">IP Address</td>
+                          <td style="text-align: left;">255.255.255.255</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">lang</td>
+                          <td style="text-align: left;">string(2)</td>
+                          <td style="text-align: left;">Language</td>
+                          <td style="text-align: left;">th,en</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">partnerId</td>
+                          <td style="text-align: left;">string(50)</td>
+                          <td style="text-align: left;">Registered partner ID for verification</td>
+                          <td style="text-align: left;">KMBXX012345678</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">partnerPwd</td>
+                          <td style="text-align: left;">string(200)</td>
+                          <td style="text-align: left;">Registered partner secret key for verification</td>
+                          <td style="text-align: left;">xxxxxxxxxxxxxx</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">serviceName</td>
+                          <td style="text-align: left;">string(50)</td>
+                          <td style="text-align: left;">Registered service name for verification</td>
+                          <td style="text-align: left;">authen_with_kplus</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">tnxId</td>
+                          <td style="text-align: left;">string(40)</td>
+                          <td style="text-align: left;">Request transaction ID</td>
+                          <td style="text-align: left;">abc1234567890</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                      <tr>
+                          <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;"> - Body object
+                          </td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">expDt</td>
+                          <td style="text-align: left;">long</td>
+                          <td style="text-align: left;">Expiry date</td>
+                          <td style="text-align: left;">1519630776</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">osPlatform</td>
+                          <td style="text-align: left;">string(20)</td>
+                          <td style="text-align: left;">Client mobile OS</td>
+                          <td style="text-align: left;">IOS, ANDROID</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">osVer</td>
+                          <td style="text-align: left;">string(10)</td>
+                          <td style="text-align: left;">Client mobile OS version</td>
+                          <td style="text-align: left;">6.0</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">parameters</td>
+                          <td style="text-align: left;">string(1000)</td>
+                          <td style="text-align: left;">Additional parameters</td>
+                          <td style="text-align: left;">callbackURL customerName logoURL partnerName serviceName
+                          </td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">ref1</td>
+                          <td style="text-align: left;">string(50)</td>
+                          <td style="text-align: left;">Partner’s reference 1</td>
+                          <td style="text-align: left;">1234567890</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">ref2</td>
+                          <td style="text-align: left;">string(50)</td>
+                          <td style="text-align: left;">Partner’s reference 2</td>
+                          <td style="text-align: left;">ABCDEFGH</td>
+                          <td style="text-align: center;">N</td>
+                      </tr>
+                      <tr>
+                          <td style="text-align: left;">tnxDt</td>
+                          <td style="text-align: left;">long</td>
+                          <td style="text-align: left;">Request transaction Date</td>
+                          <td style="text-align: left;">1519630776</td>
+                          <td style="text-align: center;">Y</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <br>
+          <p><strong>Example Request</strong></p>
+          <div class="CodeGroupWrapper sc-jzgbtB cpXsCq">
+              <div class="CodeWrapper sc-gFaPwZ fPidSa">
+                  <pre>
+                    curl -X POST \
+                      https://openapi-sandbox.kasikornbank.com/v1/authenwithkplus/form \
+                      -H 'apikey: {{YOUR_API_KEY}}' \
+                      -H 'cache-control: no-cache' \
+                      -H 'Content-Type: application/json' \
+                      -d '{
+                        "header": {
+                          "ipAddr": "255.255.255.255",
+                          "lang": "th",
+                          "partnerId": "KMBAPI000000000",
+                          "partnerPwd": "P@ssw0rd",
+                          "serviceName": "API Management",
+                          "tnxId": "21652200116326011573635726909"
+                        },
+                        "body": {
+                          "expDt": 1519630776,
+                          "osPlatform": "ANDROID",
+                          "osVer": "6",
+                          "parameters": "callbackURL customerName logoURL partnerName serviceName",
+                          "ref1": "1234567890",
+                          "ref2": "ABCDEFGH",
+                          "tnxDt": 1519630776
+                        }
+                      }'
+                  </pre>
+              </div>
+          </div>
+          <p><strong>Example Response</strong></p>
+          <div class="CodeWrapper sc-gFaPwZ hMdnVw">
+              <pre>
+              {
+                "body": {
+                  "expDt": 1519630776,
+                  "tokenId": "KMBAPI000000000865842D57E984192B5BA444FCB34375D",
+                  "url": "https://kp01test.kasikornbank.com/common-authen/web/form/KMBAPI000000000865842D57E984192B5BA444FCB34375D"
+                },
+                "header": {
+                  "errCd": null,
+                  "errDesc": null,
+                  "reqTnxId": "21652200116326011573635726909",
+                  "stusCd": "00",
+                  "tnxId": "JMBK01010030200407165K51"
+                }
+              }
+            </pre>
+          </div>
+      responses:
+        '200':
+          description: Response OK
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  errCd:
+                    type: string
+                    maxLength: 20
+                    description: Error code
+                    example: 9999
+                  errDesc:
+                    type: string
+                    maxLength: 100
+                    description: Error description
+                    example: Internal system error.
+                  reqTnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: ABC_1234567890
+                  stusCd:
+                    type: string
+                    maxLength: 2
+                    description: Status code
+                    example: 00
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Response transaction ID
+                    example: KMBK0123456789
+                required:
+                  - reqTnxId
+                  - stusCd
+                  - tnxId
+              body:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    maxLength: 2000
+                    description: Form UIRL
+                    example: "https://frontend.apps.kasikornbank.com/sessionId/123456789ABCDEF"
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Reference Token ID
+                    example: KP2XXX0000000001234567890
+                  expDt:
+                    type: number
+                    description: Expiry date
+                    example: 1519630776
+                required:
+                  - url
+                  - tokenId
+                  - expDt
+      parameters:
+        - $ref: '#/parameters/header-authorization-apikey'
+        - required: true
+          name: body
+          in: body
+          schema:
+              properties:
+                header:
+                  type: object
+                  properties:
+                    ipAddr:
+                      type: string
+                      maxLength: 15
+                      description: IP Address
+                      example: 255.255.255.255
+                    lang:
+                      type: string
+                      maxLength: 2
+                      description: Language
+                      example: th
+                    partnerId:
+                      type: string
+                      maxLength: 50
+                      description: Registered partner ID for verification
+                      example: KMBXX012345678
+                    partnerPwd:
+                      type: string
+                      maxLength: 200
+                      description: Registered partner secret key for verification
+                      example: xxxxxxxxxxxxxx
+                    serviceName:
+                      type: string
+                      maxLength: 50
+                      description: Registered service name for verification
+                      example: authen_with_kplus
+                    tnxId:
+                      type: string
+                      maxLength: 40
+                      description: Request transaction ID
+                      example: abc1234567890
+                  required:
+                  - partnerId
+                  - partnerPwd
+                  - serviceName
+                  - tnxId
+                body:
+                  type: object
+                  properties:
+                    expDt:
+                      type: number
+                      description: Expiry date
+                      example: 1519630776
+                    osPlatform:
+                      type: string
+                      maxLength: 20
+                      description: Client mobile OS
+                      example: ANDROID
+                    osVer:
+                      type: string
+                      maxLength: 10
+                      description: Client mobile OS version
+                      example: "6.0"
+                    parameters:
+                      type: string
+                      maxLength: 1000
+                      description: Additional parameters
+                      example: callbackURL customerName logoURL partnerName serviceName
+                    ref1:
+                      type: string
+                      maxLength: 50
+                      description: Partner’s reference 1
+                      example: "1234567890"
+                    ref2:
+                      type: string
+                      maxLength: 50
+                      description: Partner’s reference 2
+                      example: ABCDEFGH
+                    tnxDt:
+                      type: number
+                      description: Request transaction Date
+                      example: 1519630776
+                  required:
+                  - tnxDt
+      
+  /v1/authenwithkplus/token:
+    post:
+      tags:
+        - Authentication with K+
+      summary: Request Authen (Universal Link+QR)
+      description: > 
+       KBank’s partner sends a request for retrieve authentication options. The API service reply following information base on partner integration.
+       - QR data for generating QR image.
+       - Deeplink / Universal link for launch K+ app.
+
+       <p><strong>Parameters</strong></p>
+        <div class="TableWrapper sc-laTMn ehpwfJ">
+            <table class="CustomTable sc-hGoxap cFgzXX">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Field</th>
+                        <th style="text-align: left;">Data Type</th>
+                        <th style="text-align: left;">Description</th>
+                        <th style="text-align: left;">Example</th>
+                        <th style="text-align: center;">Mandatory</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Header parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">apikey</td>
+                        <td style="text-align: left;">string</td>
+                        <td style="text-align: left;">API KEY</td>
+                        <td style="text-align: left;">a2FzaWtvcm5iYW5rdXNlcg==</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Body parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;">  - Header object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">ipAddr</td>
+                        <td style="text-align: left;">string(15)</td>
+                        <td style="text-align: left;">IP Address</td>
+                        <td style="text-align: left;">255.255.255.255</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">lang</td>
+                        <td style="text-align: left;">string(2)</td>
+                        <td style="text-align: left;">Language</td>
+                        <td style="text-align: left;">th,en</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered partner ID for verification</td>
+                        <td style="text-align: left;">KMBXX012345678</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerPwd</td>
+                        <td style="text-align: left;">string(200)</td>
+                        <td style="text-align: left;">Registered partner secret key for verification</td>
+                        <td style="text-align: left;">xxxxxxxxxxxxxx</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">serviceName</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered service name for verification</td>
+                        <td style="text-align: left;">authen_with_kplus</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tnxId</td>
+                        <td style="text-align: left;">string(40)</td>
+                        <td style="text-align: left;">Request transaction ID</td>
+                        <td style="text-align: left;">abc1234567890</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;"> - Body object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tokenId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Generated token Id</td>
+                        <td style="text-align: left;">KP2XXX0000000001234</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">acctNo</td>
+                        <td style="text-align: left;">string(30)</td>
+                        <td style="text-align: left;">Account number</td>
+                        <td style="text-align: left;">1234567890</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">docId</td>
+                        <td style="text-align: left;">string(30)</td>
+                        <td style="text-align: left;">Citizen ID</td>
+                        <td style="text-align: left;">1234567890</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">emlAddr</td>
+                        <td style="text-align: left;">string(255)</td>
+                        <td style="text-align: left;">Email address</td>
+                        <td style="text-align: left;">rakthai@kbtg.tech</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">expDt</td>
+                        <td style="text-align: left;">long</td>
+                        <td style="text-align: left;">Expiry date</td>
+                        <td style="text-align: left;">1519630776</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">mobNo</td>
+                        <td style="text-align: left;">string(20)</td>
+                        <td style="text-align: left;">Mobile number</td>
+                        <td style="text-align: left;">0888888888</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">osPlatform</td>
+                        <td style="text-align: left;">string(20)</td>
+                        <td style="text-align: left;">Client mobile OS</td>
+                        <td style="text-align: left;">IOS, ANDROID</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">osVer</td>
+                        <td style="text-align: left;">string(10)</td>
+                        <td style="text-align: left;">Client mobile OS version</td>
+                        <td style="text-align: left;">6.0</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">contentInfo</td>
+                        <td style="text-align: left;">string(4000)</td>
+                        <td style="text-align: left;">Json string of content</td>
+                        <td style="text-align: left;">{“title”:”Register X-Wallet”, “landing”:”Your request for register X-Wallet”}
+                        </td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">parameters</td>
+                        <td style="text-align: left;">string(1000)</td>
+                        <td style="text-align: left;">Additional parameters</td>
+                        <td style="text-align: left;">callbackURL customerName logoURL partnerName serviceName
+                        </td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">ref1</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Partner’s reference 1</td>
+                        <td style="text-align: left;">1234567890</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">ref2</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Partner’s reference 2</td>
+                        <td style="text-align: left;">ABCDEFGH</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tnxDt</td>
+                        <td style="text-align: left;">long</td>
+                        <td style="text-align: left;">Request transaction Date</td>
+                        <td style="text-align: left;">1519630776</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <p><strong>Example Request</strong></p>
+        <div class="CodeGroupWrapper sc-jzgbtB cpXsCq">
+            <div class="CodeWrapper sc-gFaPwZ fPidSa">
+                <pre>
+                  curl -X POST \
+                    https://openapi-sandbox.kasikornbank.com/v1/authenwithkplus/token \
+                    -H 'apikey: {{YOUR_API_KEY}}' \
+                    -H 'cache-control: no-cache' \
+                    -H 'Content-Type: application/json' \
+                    -d '{
+                      "body": {
+                        "acctNo": "4222814966",
+                        "docId": "1409707032345",
+                        "mobNo": "0968632414",
+                        "osPlatform": "IOS",
+                        "ref1": "201911131140511001002165600000218669",
+                        "ref2": "01025000100000000003",
+                        "tnxDt": 1573635726909
+                      },
+                      "header": {
+                        "ipAddr": "127.0.0.1",
+                        "lang": "TH",
+                        "partnerId": "KMBAPI000000000",
+                        "partnerPwd": "P@ssw0rd",
+                        "serviceName": "API Management",
+                        "tnxId": "21652200116326011573635726909"
+                      }
+                    }'
+                </pre>
+            </div>
+        </div>
+        <p><strong>Example Response</strong></p>
+        <div class="CodeWrapper sc-gFaPwZ hMdnVw">
+            <pre>
+              {
+                "body": {
+                  "expDt": 1580389422,
+                  "link": "https://appuat.kplus.link/authenwithkplus/?tokenId=KMBAPI0000000007E0FF2B588D64F66A1F080AEBD2F6D03nextAction=authenwithkplus",
+                  "qr": "00020303510047KMBAPI00000000019CC92AC4A52453DB97982FE3AFCD6B699044E58",
+                  "tokenId": "KMBAPI0000000007E0FF2B588D64F66A1F080AEBD2F6D03"
+                },
+                "header": {
+                  "errCd": null,
+                  "errDesc": null,
+                  "reqTnxId": "21652200116326011573635726909",
+                  "stusCd": "00",
+                  "tnxId": "JMBK01010030195842129K42"
+                }
+              }
+          </pre>
+        </div>
+      responses:
+        '200':
+          description: Response OK
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  errCd:
+                    type: string
+                    maxLength: 20
+                    description: Error code
+                    example: 9999
+                  errDesc:
+                    type: string
+                    maxLength: 100
+                    description: Error description
+                    example: Internal system error.
+                  reqTnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: ABC_1234567890
+                  stusCd:
+                    type: string
+                    maxLength: 2
+                    description: Status Code
+                    example: '00 = Success , 1:failed'
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Response transaction ID
+                    example: KMBK0123456789
+                  
+                required:
+                - reqTnxId
+                - stusCd
+                - tnxId
+                
+              body:
+                type: object
+                properties:
+                  qr:
+                    type: string
+                    maxLength: 255
+                    description: Raw data for render QR code
+                    example: '00020303510047KMBODD00000000 13E959F1763F542C4BECDCA782D B819C399045ECC'
+                  link:
+                    type: string
+                    maxLength: 500
+                    description: K+ Universal Link
+                    example: 'https://kasikornbank.page.link/auth/?tok en=xxx'
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Reference Token ID
+                    example: KP2XXX0000000001234567890
+                  expDt:
+                    type: integer
+                    format: int64 
+                    description: Expiry date
+                    example: 1519630776
+          
+                required:
+                - qr
+                - link
+                - tokenId
+                - expDt
+      parameters:
+        - $ref: '#/parameters/header-authorization-apikey'
+        - required: true
+          name: body
+          in: body
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  ipAddr:
+                    type: string
+                    maxLength: 15
+                    description: IP Address
+                    example: 255.255.255.255
+                  lang:
+                    type: string
+                    maxLength: 2
+                    description: Language
+                    example: th,en
+                  partnerId:
+                    type: string
+                    maxLength: 50
+                    description: Registered partner ID for verification
+                    example: KMBXX012345678
+                  partnerPwd:
+                    type: string
+                    maxLength: 200
+                    description: Registered partner secret key for verification
+                    example: xxxxxxxxxxxxxx
+                  serviceName:
+                    type: string
+                    maxLength: 50
+                    description: Registered service name for verification
+                    example: authen_with_kplus
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: abc1234567890
+                required:
+                - partnerId
+                - partnerPwd
+                - serviceName
+                - tnxId
+                
+              body:
+                type: object
+                properties:
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Generated token Id
+                    example: KP2XXX0000000001234
+                  acctNo:
+                    type: string
+                    maxLength: 30
+                    description: Account Number
+                    example: 1234567890
+                  docId:
+                    type: string
+                    maxLength: 30
+                    description: Citizen ID
+                    example: 1234567890
+                  emlAddr:
+                    type: string
+                    maxLength: 255
+                    description: Email Address 
+                    example: test@kbtg.tech
+                  expDt:
+                    type: integer
+                    format: int64 
+                    description: Expiry date 
+                    example: 1519630776
+                  mobNo:
+                    type: string
+                    maxLength: 20 
+                    description: Mobile number 
+                    example: 0888888888
+                  osPlatform:
+                    type: string
+                    maxLength: 20 
+                    description: Client mobile OS
+                    example: IOS, ANDROID
+                  osVer:
+                    type: string
+                    maxLength: 10 
+                    description: Client mobile OS version
+                    example: 6.0
+                  contentInfo:
+                    type: string
+                    maxLength: 4000 
+                    description: Json string of content
+                    example: '{"title":"Register X-Wallet", "landing":"Your request for register X-Wallet"}'
+                  parameters:
+                    type: string
+                    maxLength: 1000 
+                    description: Additional parameters
+                    example: 'callbackURLcustomerName logoURL partnerName serviceName'  
+                  ref1:
+                    type: string
+                    maxLength: 50 
+                    description: Partner’s reference 1
+                    example: 1234567890  
+                  ref2:
+                    type: string
+                    maxLength: 50 
+                    description: Partner’s reference 2
+                    example: ABCDEFGH  
+                  tnxDt:
+                    type: integer
+                    format: int64 
+                    description: Request transaction Date
+                    example: 1519630776   
+                    
+                required:
+                - tnxDt
+        
+  /v1/authenwithkplus/inquiry:
+    post:
+      tags:
+        - Authentication with K+
+      summary: Enquiry Authentication Status
+      description: >
+        The service returns latest authentication status and customer information if customer already confirm.
+
+        <p><strong>Parameters</strong></p>
+        <div class="TableWrapper sc-laTMn ehpwfJ">
+            <table class="CustomTable sc-hGoxap cFgzXX">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Field</th>
+                        <th style="text-align: left;">Data Type</th>
+                        <th style="text-align: left;">Description</th>
+                        <th style="text-align: left;">Example</th>
+                        <th style="text-align: center;">Mandatory</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Header parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">apikey</td>
+                        <td style="text-align: left;">string</td>
+                        <td style="text-align: left;">API KEY</td>
+                        <td style="text-align: left;">a2FzaWtvcm5iYW5rdXNlcg==</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Body parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;">  - Header object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">ipAddr</td>
+                        <td style="text-align: left;">string(15)</td>
+                        <td style="text-align: left;">IP Address</td>
+                        <td style="text-align: left;">255.255.255.255</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">lang</td>
+                        <td style="text-align: left;">string(2)</td>
+                        <td style="text-align: left;">Language</td>
+                        <td style="text-align: left;">th,en</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered partner ID for verification</td>
+                        <td style="text-align: left;">muangthai_001122</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerPwd</td>
+                        <td style="text-align: left;">string(200)</td>
+                        <td style="text-align: left;">Registered partner secret key for verification</td>
+                        <td style="text-align: left;">S1AyQ0ZCMDAwMDMzMTU5LWtwb</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">serviceName</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered service name for verification</td>
+                        <td style="text-align: left;">authentication</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tnxId</td>
+                        <td style="text-align: left;">string(40)</td>
+                        <td style="text-align: left;">Request transaction ID</td>
+                        <td style="text-align: left;">abc_1234567890</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;"> - Body object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tokenId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Reference Token ID</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <p><strong>Example Request</strong></p>
+        <div class="CodeGroupWrapper sc-jzgbtB cpXsCq">
+            <div class="CodeWrapper sc-gFaPwZ fPidSa">
+                <pre>
+                  curl -X POST \
+                    https://openapi-sandbox.kasikornbank.com/v1/authenwithkplus/inquiry \
+                    -H 'apikey: {{YOUR_API_KEY}}' \
+                    -H 'cache-control: no-cache' \
+                    -H 'Content-Type: application/json' \
+                    -d '{
+                      "header": {
+                        "tnxId": "1122334455",
+                      "partnerId":"KMBAPI000000000",
+                          "partnerPwd":"P@ssw0rd",
+                        "serviceName": "authentication",
+                        "lang": "TH",
+                        "ipAddr": "255.255.255.255"
+                      },
+                      "body": {
+                        "tokenId": "KMBAPI0000000002D2BD40862B74EF8B36ADF82220B62A6"
+                      }
+                    }'
+                  </pre>
+            </div>
+        </div>
+        <p><strong>Example Response</strong></p>
+        <div class="CodeWrapper sc-gFaPwZ hMdnVw">
+            <pre>
+              {
+                "body": {
+                  "acctNo": null,
+                  "authStusCd": "40",
+                  "consentInfo": null,
+                  "emlAddr": null,
+                  "prodInfo": null,
+                  "tnxDt": 1580389122,
+                  "tokenId": "KMBAPI0000000007E0FF2B588D64F66A1F080AEBD2F6D03"
+                },
+                "header": {
+                  "errCd": null,
+                  "errDesc": null,
+                  "reqTnxId": "abc1234567890",
+                  "stusCd": "00",
+                  "tnxId": "JMBK01010030200656369K06"
+                }
+              }
+              </pre>
+        </div>
+      responses:
+        '200':
+          description: Response OK
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  errCd:
+                    type: string
+                    maxLength: 20
+                    description: Error code
+                    example: 9999
+                  errDesc:
+                    type: string
+                    maxLength: 100
+                    description: Error description
+                    example: Internal system error.
+                  reqTnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: ABC_1234567890
+                  stusCd:
+                    type: string
+                    maxLength: 2
+                    description: Status code
+                    example: 00
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Response transaction ID
+                    example: KMBK0123456789
+                required:
+                  - reqTnxId
+                  - stusCd
+                  - tnxId
+              body:
+                type: object
+                properties:
+                  acctNo:
+                    type: string
+                    maxLength: 30
+                    description: Account number
+                    example: 1234567890
+                  ref1:
+                    type: string
+                    maxLength: 32
+                    description: Reference 1
+                    example: 122444445250280
+                  ref2:
+                    type: string
+                    maxLength: 20
+                    description: Reference 2
+                    example: 027432343
+                  tnxDt:
+                    type: number
+                    description: Request transaction Dt
+                    example: 1519630776
+                  tokenId:
+                    type: string
+                    maxLength: 40
+                    description: Reference Token ID
+                    example: KP2XXX00000000013BEC
+                  consentInfo:
+                    type: string
+                    example: '{ "acptMarketConduct" : "Y","acptTerm" : "Y" }'
+                  prodInfo:
+                    type: string
+                  authStusCd:
+                    type: string
+                    maxLength: 2
+                    description: Authentication status code
+                    example: 00
+                required:
+                  - tnxDt
+                  - tokenId
+                  - authStusCd
+          
+      parameters:
+        - $ref: '#/parameters/header-authorization-apikey'
+        - required: true
+          name: body
+          in: body
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  ipAddr:
+                    type: string
+                    maxLength: 15
+                    description: IP Address
+                    example: 255.255.255.255
+                  lang:
+                    type: string
+                    maxLength: 2
+                    description: Language
+                    example: th
+                  partnerId:
+                    type: string
+                    maxLength: 50
+                    description: Registered partner ID for verification
+                    example: KMBXX012345678
+                  partnerPwd:
+                    type: string
+                    maxLength: 200
+                    description: Registered partner secret key for verification
+                    example: xxxxxxxxxxxxxx
+                  serviceName:
+                    type: string
+                    maxLength: 50
+                    description: Registered service name for verification
+                    example: authen_with_kplus
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: abc1234567890
+                required:
+                - ipAddr
+                - partnerId
+                - partnerPwd
+                - serviceName
+                - tnxId
+              body:
+                type: object
+                properties:
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Reference Token ID
+                    example: KMBXXX999999999999999999999999999
+                required:
+                - tokenId
+        
+  
+            
+  /v1/authenwithkplus/cancel:
+    post:
+      tags:
+        - Authentication with K+
+      summary: Cancel Authentication
+      description: >
+        The service for cancel Authentication
+
+        <p><strong>Parameters</strong></p>
+        <div class="TableWrapper sc-laTMn ehpwfJ">
+            <table class="CustomTable sc-hGoxap cFgzXX">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">Field</th>
+                        <th style="text-align: left;">Data Type</th>
+                        <th style="text-align: left;">Description</th>
+                        <th style="text-align: left;">Example</th>
+                        <th style="text-align: center;">Mandatory</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Header parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">apikey</td>
+                        <td style="text-align: left;">string</td>
+                        <td style="text-align: left;">API KEY</td>
+                        <td style="text-align: left;">a2FzaWtvcm5iYW5rdXNlcg==</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(69, 194, 177); color: white;"> Body parameter
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;">  - Header object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">ipAddr</td>
+                        <td style="text-align: left;">string(15)</td>
+                        <td style="text-align: left;">IP Address</td>
+                        <td style="text-align: left;">255.255.255.255</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">lang</td>
+                        <td style="text-align: left;">string(2)</td>
+                        <td style="text-align: left;">Language</td>
+                        <td style="text-align: left;">th,en</td>
+                        <td style="text-align: center;">N</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered partner ID for verification</td>
+                        <td style="text-align: left;">muangthai_001122</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">partnerPwd</td>
+                        <td style="text-align: left;">string(200)</td>
+                        <td style="text-align: left;">Registered partner secret key for verification</td>
+                        <td style="text-align: left;">S1AyQ0ZCMDAwMDMzMTU5LWtwb</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">serviceName</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Registered service name for verification</td>
+                        <td style="text-align: left;">authentication</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tnxId</td>
+                        <td style="text-align: left;">string(40)</td>
+                        <td style="text-align: left;">Request transaction ID</td>
+                        <td style="text-align: left;">abc_1234567890</td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: left; background-color: rgb(80, 190, 180); color: white;"> - Body object
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">tokenId</td>
+                        <td style="text-align: left;">string(50)</td>
+                        <td style="text-align: left;">Reference Token ID</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: center;">Y</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <p><strong>Example Request</strong></p>
+        <div class="CodeGroupWrapper sc-jzgbtB cpXsCq">
+            <div class="CodeWrapper sc-gFaPwZ fPidSa">
+                <pre>
+                curl -X POST \
+                    https://openapi-sandbox.kasikornbank.com/v1/authenwithkplus/cancel \
+                    -H 'apikey: {{YOUR_API_KEY}}' \
+                    -H 'cache-control: no-cache' \
+                    -H 'Content-Type: application/json' \
+                    -d '{
+                      "header": {
+                        "ipAddr": "255.255.255.255",
+                        "lang": "th",
+                        "partnerId": "muangthai_001122",
+                        "partnerPwd": "S1AyQ0ZCMDAwMDMzMTU5LWtwb",
+                        "serviceName": "authentication",
+                        "tnxId": "abc_1234567890"
+                      },
+                      "body": {
+                        "tokenId": "KMBXXX999999999999999999999999999"
+                      }
+                    }'
+              </pre>
+            </div>
+        </div>
+        <p><strong>Example Response</strong></p>
+        <div class="CodeWrapper sc-gFaPwZ hMdnVw">
+            <pre>
+              {
+                "body": {
+                  "tokenId": "KMBXXX999999999999999999999999999"
+                },
+                "header": {
+                  "errCd": null,
+                  "errDesc": null,
+                  "reqTnxId": "21652200116326011573635726909",
+                  "stusCd": "00",
+                  "tnxId": "abc_1234567890"
+                }
+              }
+          </pre>
+        </div>
+      responses:
+        '200':
+          description: Response OK
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  errCd:
+                    type: string
+                    maxLength: 20
+                    description: Error code
+                    example: 9999
+                  errDesc:
+                    type: string
+                    maxLength: 100
+                    description: Error description
+                    example: Internal system error.
+                  reqTnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: ABC_1234567890
+                  stusCd:
+                    type: string
+                    maxLength: 2
+                    description: Status code
+                    example: 00
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Response transaction ID
+                    example: KMBK0123456789
+                required:
+                  - reqTnxId
+                  - stusCd
+                  - tnxId
+              body:
+                type: object
+                properties:
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Reference Token ID
+                    example: KMBXXX99999999999999999999999999999
+                required:
+                  - tokenId
+                  
+      parameters:
+        - $ref: '#/parameters/header-authorization-apikey'
+        - required: true
+          name: body
+          in: body
+          schema:
+            properties:
+              header:
+                type: object
+                properties:
+                  ipAddr:
+                    type: string
+                    maxLength: 15
+                    description: IP Address
+                    example: 255.255.255.255
+                  lang:
+                    type: string
+                    maxLength: 2
+                    description: Language
+                    example: th
+                  partnerId:
+                    type: string
+                    maxLength: 50
+                    description: Registered partner ID for verification
+                    example: muangthai_001122
+                  partnerPwd:
+                    type: string
+                    maxLength: 200
+                    description: Registered partner secret key for verification
+                    example: S1AyQ0ZCMDAwMDMzMTU5LWtwb
+                  serviceName:
+                    type: string
+                    maxLength: 50
+                    description: Registered service name for verification
+                    example: authentication
+                  tnxId:
+                    type: string
+                    maxLength: 40
+                    description: Request transaction ID
+                    example: abc_1234567890
+                required:
+                - ipAddr
+                - partnerId
+                - partnerPwd
+                - serviceName
+                - tnxId
+              body:
+                type: object
+                properties:
+                  tokenId:
+                    type: string
+                    maxLength: 50
+                    description: Reference Token ID
+                    example: KMBXXX999999999999999999999999999
+                required:
+                - tokenId
+                  
+x-components: {}
+
+parameters:
+  header-authorization-apikey:
+    name: apikey
+    in: header
+    type: string
+    required: true
+    description: >
+      Consumer key obtained after app registration on developer portal.
+      
+      
+      Pass the API key into a REST API call as a header parameter with the following format. Replace YOUR_API_KEY with your API key,
+      
+      <br>
+      <table style="border: 1px solid #ddd;">
+        <tr>
+          <td>apikey</td>
+          <td>a2FzaWtvcm5iYW5rdXNlcg==</td>
+        </tr>
+      </table>
+      
+    default: a2FzaWtvcm5iYW5rdXNlcg==
+
+definitions:
+  Information_Sharing:
+    description: >
+      <div class="api_content">
+        <p>Information Sharing
+          บริการรับ-ส่งข้อมูล ผ่าน K PLUS - บริการที่อำนวยความสะดวกในการรับ-ส่งข้อมูลทางอิเล็กทรอนิกส์ ให้กับลูกค้าผู้ยินยอมเปิดเผยข้อมูล ผ่านช่องทาง KPLUS</p>
+        <div class="MarkdownContainer sc-CtfFt dlbfFO">
+            <h2>Status Code (statusCode)</h2>
+            <br>
+            <div class="TableWrapper">
+                <table class="CustomTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">stusCd</th>
+                            <th style="text-align: left;">errCd</th>
+                            <th style="text-align: left;">errDesc</th>
+                            <th style="text-align: left;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left;">00</td>
+                            <td style="text-align: left;">-</td>
+                            <td style="text-align: left;">-</td>
+                            <td style="text-align: left;">Success</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">1</td>
+                            <td style="text-align: left;">1</td>
+                            <td style="text-align: left;">Requestor system profile not found</td>
+                            <td style="text-align: left;">Invalid Partner ID, Partner secret or service name.</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">1</td>
+                            <td style="text-align: left;">2</td>
+                            <td style="text-align: left;">Invalid customer information.</td>
+                            <td style="text-align: left;">Invalid format or no registration (K+ Profile, Account, Partner).</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">1</td>
+                            <td style="text-align: left;">99999</td>
+                            <td style="text-align: left;">Internal system error.</td>
+                            <td style="text-align: left;">KBank internal system error.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
